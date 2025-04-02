@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  flask-ml-app:
+    container_name: flask-ml-app
+    build: . # budowanie na podstawie dockerfile
+    ports:
+      - "5000:5000" # mapowanie portów
+    networks:
+      - ml_network # to jest sieć dockerowa do komunikacji z no. bazą danych
+    restart: always # automatyczny restart kontenera (na wypadek awarii)
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://postgres:password@db:5432/ml_db 
+
+  db:
+    image: postgres:latest # obraz postgreSQL
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres # tutaj podajemy nazwę
+      POSTGRES_PASSWORD: password # tutaj podajemy hasło
+      POSTGRES_DB: ml_db # tutaj podejaemy nazwę bazy
+    ports:
+      - "5432:5432"
+    networks:
+      - ml_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # gdzie przechowujemy bazę na dysku
+
+networks: # sieć, która pozwala na komunikację z bazą danych
+  ml_network:
+    driver: bridge
+
+volumes: # przechowywanie danych postgreSQL
+  postgres_data:
