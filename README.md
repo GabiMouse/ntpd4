@@ -47,3 +47,9 @@ Aplikacja powinna działać na `http://127.0.0.1:5000` (domyślnie)
 Zmienne te można dostosować w pliku docker-compose.yml
 
 Należy również pamiętać o odpowiednim uzupełnieniu wszystkich informacji dotyczących bazy danych (hasło itp)
+
+### Załączone pliki
+Załączam pliki z poprzedniego labu oraz:
+* *requirements.txt* - niezbędne biblioteki
+* *Dockerfile* - plik odpowiedzialny za tworzenie obrazu aplikacji
+* *docker-compose.yml* - plik umożliwiający uruchomienie aplikacji z bazą danych
