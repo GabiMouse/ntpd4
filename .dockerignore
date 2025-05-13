@@ -1,0 +1,24 @@
+#systemowe pliki i foldery
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+#pliki środowiskowe
+.env
+.venv/
+*.env
+
+#pliki VSC i innych edytorów
+.vscode/
+.idea/
+
+#pliki Gita
+.git
+.gitignore
+
+#pliki tymczasowe
+*.log
+*.swp
+.DS_Store
+Thumbs.db
